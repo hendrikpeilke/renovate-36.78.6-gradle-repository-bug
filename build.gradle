@@ -1,0 +1,19 @@
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation 'com.some:dependency-in-not-working-repository:2.0.2'
+}
+
+def someNonWorkingMavenRepo = {
+    name = "SomeName"
+    url "https://some.not.working.repository.com/"
+}
+
+def someWorkingMavenRepoUrl = "https://some.working.repository.com"
+
+repositories {
+    maven {
+	  url someWorkingMavenRepoUrl
+	}
+    maven someNonWorkingMavenRepo 
+}
